@@ -55,13 +55,13 @@
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#" onclick="window.open('https://www.linkedin.com/in/michael-gonzalez-67076627/')">
               <i class="fab fa-linkedin-in"></i>
             </a>
           </li>
           <br>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#" onclick="window.open('https://github.com/MinneolaMike')">
               <i class="fab fa-github"></i>
             </a>
           </li>
@@ -89,7 +89,8 @@
         <div class="col-lg-4 ml-auto">
           <p class="lead">Hello, my name is Mike Gonzalez. I recently completed the Coding Boot Camp at UCF for Full Stack
             Web Development. After being exposed to many different web development technologies, I absolutely love Full Stack
-            Web Development.</p>
+            Web Development. I like both the frontend and backend of development, especially how different forms of JavaScript
+            can be utilized.</p>
         </div>
         <div class="col-lg-4 mr-auto">
           <p class="lead">I am pursuing a career in Web Development and even though I’m new to coding, it is something that
@@ -382,6 +383,17 @@
     </div>
   </section>
 
+  <form id="contact-form">
+      <input type="hidden" name="contact_number">
+      <label>Name</label>
+      <input type="text" name="user_name">
+      <label>Email</label>
+      <input type="email" name="user_email">
+      <label>Message</label>
+      <textarea name="contact"></textarea>
+      <input type="submit" value="Send">
+  </form>
+
   <!-- Contact Section -->
   <section id="contact">
     <div class="container">
@@ -391,7 +403,7 @@
         <div class="col-lg-8 mx-auto">
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
           <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-          <form name="sentMessage" id="contactForm" novalidate="novalidate">
+          <form name="sentMessage" id="contact-form" novalidate="novalidate">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Name</label>
@@ -679,6 +691,22 @@
   <!-- Contact Form JavaScript -->
   <script src="js/jqBootstrapValidation.js"></script>
   <script src="js/contact_me.js"></script>
+
+  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+           emailjs.init("user_KhfiiQ70u1laABiC1QVlZ");
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                this.contact_number.value = Math.random() * 100000 | 0;
+                emailjs.sendForm('contact_service', 'contact_template', this);
+            });
+        }
+    </script>
 
   <!-- Custom scripts for this template -->
   <script src="js/freelancer.min.js"></script>
