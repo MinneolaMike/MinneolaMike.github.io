@@ -119,3 +119,5 @@ gulp.task('dev', ['css', 'js', 'browserSync'], function() {
   gulp.watch('./js/*.js', ['js']);
   gulp.watch('./*.html', browserSync.reload);
 });
+
+
